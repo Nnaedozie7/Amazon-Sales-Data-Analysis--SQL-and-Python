@@ -1,61 +1,101 @@
-# Sales Analysis for Amazon using SQL in a jupyter notebook environment
+# Amazon Sales Data Analysis (SQL & Python)
 
-### Project Overview
+This project analyzes **Amazon global sales data** using **SQL (SQLite)** and **Python** to uncover insights related to revenue, profit, product performance, regions, sales channels, and order priorities.
 
-This data analysis aims to provide insights into the sales performancee of Amazon over a period of , across seven Regions and 76 Countries. We intend to ideentify trends and patterns. Determine which regions and countries had more sales generally and in the individual products. The highest performing Sales Channel and Order priority.
+The analysis demonstrates practical use of **SQL queries**, database creation, and data exploration for business intelligence and data analytics purposes.
 
-### Data Sources
+---
 
-Sales Data: The primary dataset used for this analysis is the "Amazon Sales Data.csv" which containsdetailed information about each sales made by the company.
+## 📌 Project Overview
 
-### Tools 
+The objective of this project is to:
+- Store structured sales data in a relational database
+- Perform SQL-based exploratory analysis
+- Analyze revenue, profit, and units sold across multiple dimensions
+- Identify high-performing regions, countries, and product categories
+- Understand sales behavior based on channel and order priority
 
-- Structured Query Language (SQL) - Data Analysis
-- Pandas - Creating Dataframe
-- Python - Programming
+The project integrates **Python and SQLite** to simulate a real-world data analytics workflow.
 
-### Exploratory Data Analysis (EDA)
-EDA involved exploring the sales data to answer questions such as
+---
 
-1. Products with the highest revenue and Profit
-2. Products with the highest and least units sold
-3. Countries and Regions with the highest revenue
-4. Correlation between Revenue and Profit for each product in every country and Region
-5. Correlation between Number of units sold, Revenue and Profit for each product in every country and Region
-6. Percentage profit for each product
-7. Percentage profit for each product for each product in every country and Region
-8. Number of sales made through each sales channel
-9. The highest and least used sales channel for each product.
-10. The highest and least used sales channel for each product in every country and Region.
-11. Order Priority for each product sold.
-12. Time of delivery for each product
-13. Products with the highest and least units sold in every country and Region.
+## 📊 Dataset Description
 
-### Data Analysis
-It includes some interesting codes such as
+The dataset contains **1,000 sales records** with the following key attributes:
 
-SELECT "Country", SUM("Total Profit") AS "Total Profit"
-FROM Amaz
-GROUP BY "Country"
-ORDER BY "Total Profit" DESC
-""")
-rows = cursor.fetchall()
+- `Region`
+- `Country`
+- `Item Type`
+- `Sales Channel` (Online / Offline)
+- `Order Priority` (H, M, L, C)
+- `Order Date`
+- `Ship Date`
+- `Order ID`
+- `Units Sold`
+- `Unit Price`
+- `Unit Cost`
+- `Total Revenue`
+- `Total Cost`
+- `Total Profit`
 
-columns = [description[0] for description in cursor.description]
-df = pd.DataFrame(rows, columns=columns)
-display(df)
-connection.commit()
-connection.close()
+The data covers multiple regions including:
+- Sub-Saharan Africa
+- Europe
+- Asia
+- Australia and Oceania
+- Middle East and North Africa
+- North America
+- Central America and the Caribbean
 
-### Results
+---
 
-The analysis as can be seen, clearly shows the performance of each product in every Region and Country and  also a general performance namely,
+## 🛠️ Tools & Technologies
 
-- Total Units Sold
-- Total Profit
-- Total Revenue
-- Percentage profit
-- Most Sales Channel used
-- Time of deelivery
+- **Python**
+- **SQLite**
+- **SQL**
+- **Pandas**
+- **Jupyter Notebook**
 
-These insights will help Amazon develop a amrketing strategy for each product in every region and country and also determinee which products to prioritize and the sales channels to be focused on.
+---
+
+## 🗄️ Database Design
+
+- A SQLite database (`Amazon.db`) was created
+- Sales data was imported from CSV into a table named `Amaz`
+- Column data types were validated using `PRAGMA table_info`
+
+This setup enables efficient querying and structured analysis.
+
+---
+
+## 🔍 Analysis Performed
+
+### 📈 Revenue & Profit Analysis
+- Total revenue and profit by:
+  - Country
+  - Region
+  - Item Type
+- Identification of top and bottom performing countries
+
+### 📦 Product Performance
+- Revenue, profit, and units sold by item type
+- Profit margin (%) calculated for each product category
+- Comparison of high-margin vs high-volume products
+
+### 🌍 Regional Insights
+- Regional contribution to total revenue and profit
+- Product performance within each region
+
+### 🛒 Sales Channel Analysis
+- Comparison of Online vs Offline sales
+- Distribution of sales channels by region and product type
+
+### 🚦 Order Priority Analysis
+- Distribution of order priorities across:
+  - Item types
+  - Regions
+  - Countries
+
+### ⏱️ Delivery Time
+- Estimated delivery time calculated using:
